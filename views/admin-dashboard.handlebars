@@ -1,0 +1,82 @@
+ 
+
+<div   class="col-md-10 col-md-offset-1">
+
+
+
+  <table class="table table-striped table-hover text-left">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Deadline</th>
+        <th>Subject</th>
+        <th style="color:rgb(0, 255, 157);column-width: 400px;">Details</th>
+        <th>Status</th>
+        <th>Budget(USD)</th>
+        <th>Upload a file</th>
+        <th>Order files</th>
+        <th>Discuss</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orders}}
+      <tr>
+        <td>{{title}}</td>
+        <td>{{deadline}}</td>
+        <td>{{subject}}</td>
+        <td width="70%">{{details}}</td>
+
+        <td>
+          <form method="POST" action="/admin/select/{{_id}}" id="Courses">
+            <select name="Selection" size="10">
+              <option value="in process">In Process</option>
+              <option value="under review">Under-review</option>
+              <option value="finished">Finished</option>
+              <option value={{status}} selected>{{status}}</option>
+            </select>
+            <input type='submit' name='register'>
+          </form>
+        </td>
+
+        <td>
+
+          <form method="POST" action="/admin/updateBudget/{{_id}}" id="budget">
+            <div id="edit" contenteditable="true">
+
+              <input name="newB" type="number" value="{{budget}}" id="budget" />
+              <button type="submit">Update budget</button>
+            </div>
+          </form>
+
+        </td>
+        <td  width="70%">{{discuss}}</td>
+        <td >
+
+
+
+
+          <form action="/admin/savefile/{{_id}}" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+              <input style="color:rgb(0, 255, 157);" type='file' name="file" id='file' />
+              <input class="btn btn-success btn-filter" type="submit" value="Upload">
+
+            </div>
+          </form>
+        </td>
+        <td  width="70%"> 
+          {{#files}}
+          <a href="{{this}}">{{this}}</a>{{/files}}
+
+        </td>
+        <td>
+          <a href="/admin/admin-chat/{{_id}}">Chat</a> Undread:{{unread}}
+        </td>
+
+
+
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div>

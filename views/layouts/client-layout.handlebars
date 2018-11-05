@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="wide wow-animation">
+
+<head>
+  <!-- Site Title-->
+  <title>{{title}}</title>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <!-- Stylesheets-->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CPT+Serif:400,700,400italic">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+
+
+  <link rel="stylesheet" href="/css/bootstrap-datetimepicker.css">
+
+
+  <!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+</head>
+
+<body style="background:black;">
+  <!-- Page-->
+  <div class="page text-center">
+    <!-- Page Header-->
+    {{!--
+    <header class="page-header">
+      <!-- RD Navbar-->
+      <div class="rd-navbar-wrap"> --}}
+
+        <!-- Second navbar for sign in -->
+        <nav class=" navbar-inverse fixed-nav-bar ">
+          <div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/" style="display: inline-block; margin:0px; padding:0px; padding-top:16px; padding-left:13px;">
+                <span> Help Habibi </span>
+              </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse nav_section" id="navbar-collapse-2">
+              <ul class="nav navbar-nav navbar-right nav_section">
+
+                <li class="nav_section">
+                  <a href="/">Home</a>
+                </li>
+                <li id="dashboardButton">
+                  <a href="/client/client-dashboard">Your orders</a>
+                </li>
+
+                <li>
+                  <a href="/client/order">New Order</a>
+                </li>
+                <li>
+
+
+                  <a href="https://api.whatsapp.com/send?phone=923427720005&text=Hello%2C%20Habibi!">
+                    Whatsapp
+                  </a>
+
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">More
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="/proves">Sample Works</a>
+                    </li>
+                    <li class="divider"></li>
+
+                    <li>
+                      <a href="/services">Services</a>
+                    </li>
+                    <li class="divider"></li>
+
+                    <li>
+                      <a href="/about">About Us</a>
+                    </li>
+                    <li class="divider"></li>
+
+                    <li>
+                      <a href="/guarantees">Guarantees</a>
+                    </li>
+
+                    <li class="divider"></li>
+
+                    <li>
+                      <a id="changePassword" href="/client/changePassword">Change Password</a>
+                    </li>
+
+
+                  </ul>
+                </li>
+                {{#if isUser}}
+                <li id="logoutform">
+                  <a href="/client/logout" class="btn collapsed" aria-expanded="false" aria-controls="nav-collapse2">Log
+                    out</a>
+                </li>
+                {{else}}
+                <li>
+                  <a href="/client/register">Register</a>
+                </li>
+                <li>
+                  <a href="/client/login">Login</a>
+                </li>
+                {{/if}}
+              </ul>
+              <div style="float: right;" class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+                <form id="formFloat" class="navbar-form navbar-right form-inline" method="post" action="/client/login" role="form">
+                  <div class="form-group">
+                    <label class="sr-only" for="Email">Email</label>
+                    <input id="inputEmail" name="username" type="email" class="form-control" placeholder="Email" autofocus required />
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="Password">Password</label>
+                    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required />
+                  </div>
+                  <button type="submit" class="btn btn-success">Sign in</button>
+
+                  <a href="/client/register" class="btn btn-default btn-outline btn-circle collapsed" aria-expanded="false" aria-controls="nav-collapse2">Or
+                    register</a>
+
+                </form>
+                {{!--
+                <form id="formFlot" method="post" action="/client/register" role="form">
+                  <button type="submit" class="btn btn-default btn-outline btn-circle collapsed" aria-expanded="false" aria-controls="nav-collapse2">Or
+                    Sign up</button>
+
+                </form> --}}
+
+              </div>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container -->
+        </nav>
+        <!-- /.navbar -->
+
+        {{!--
+      </div>
+    </header> --}}
+    <!-- Page Content-->
+    <main class="page-content">
+      {{{body}}}
+    </main>
+    <!-- Page Footer-->
+    <footer class="page-footer" style="display:block">
+      <div class="shell text-md-left">
+        <div class="range text-md-left">
+          <div class="cell-md-5">
+            <a href="#">
+              <img src="/images/habibi.png" width="100px" height="100px" alt="">
+            </a>
+          </div>
+          <div class="cell-md-7 text-md-right cell-md-middle">
+            <ul class="list-inline">
+              <li>
+                <a href="https://www.instagram.com/help.habibi/" class="icon icon-nevada fa-instagram"></a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/HelpHabibi/" class="icon icon-nevada fa-facebook-square"></a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="range range-xs-center">
+          <div class="cell-xs-6 cell-sm-5 cell-md-2">
+            {{!--
+            <p class="text-bold big">Menu</p>
+            <ul class="list">
+              <li>
+                <a href="index.html" class="active">Home</a>
+              </li>
+              <li>
+                <a href="About.html">About Us</a>
+              </li>
+              <li>
+                <a href="Services.html">Services</a>
+              </li>
+              <li>
+                <a href="Pricing.html">Prices</a>
+              </li>
+              <li>
+                <a href="Guarantees.html">Guarantees</a>
+              </li>
+              <li>
+                <a href="Contacts.html">Contact Us</a>
+              </li>
+            </ul>
+          </div> --}} {{!--
+          <div class="cell-xs-6 cell-sm-5 cell-md-3 offset-top-52 offset-xs-top-0">
+            <p class="text-bold big"> Free resources</p>
+            <ul class="list">
+              <li>
+                <a href="#">Free essays</a>
+              </li>
+              <li>
+                <a href="#">Essay tips</a>
+              </li>
+              <li>
+                <a href="#">Essay types</a>
+              </li>
+              <li>
+                <a href="#">Plagiarism checker</a>
+              </li>
+            </ul>
+          </div> --}} {{!--
+          <div class="offset-top-52 offset-md-top-0 cell-xs-6 cell-sm-5 cell-md-3">
+            <p class="text-bold big">Dissertation help</p>
+            <ul class="list">
+              <li>
+                <a href="#">Free consultation</a>
+              </li>
+              <li>
+                <a href="#">Essay examples</a>
+              </li>
+              <li>
+                <a href="#">Buy essay</a>
+              </li>
+              <li>
+                <a href="#">Dissertation assistance</a>
+              </li>
+              <li>
+                <a href="#">Free dissertations</a>
+              </li>
+              <li>
+                <a href="#">Coursework help</a>
+              </li>
+            </ul>
+          </div> --}} {{!--
+          <div class="offset-top-52 offset-md-top-0 cell-xs-6 cell-sm-5 cell-md-4">
+            <p class="text-bold big">Address</p>
+            <a href="#">
+              28 Jackson Blvd Ste 1020 Chicago
+              <br class="veil reveal-md-block"> IL 60604-2340</a>
+            <p class="offset-top-30 text-bold big">Phone</p>
+            <a href="callto:#">+1 (234) 567-8901</a>
+          </div>
+        </div> --}}
+
+      </div>
+    </footer>
+    <!-- {%FOOTER_LINK}-->
+  </div>
+  <!-- Global Mailform Output-->
+  <div id="form-output-global" class="snackbars"></div>
+  <!-- PhotoSwipe Gallery-->
+  <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+          <button title="Share" class="pswp__button pswp__button--share"></button>
+          <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+          <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+        <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__cent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Javascript-->
+  <script src="/js/core.min.js"></script>
+  <script src="/js/script.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/moment.min.js"></script>
+  <script src="/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript">
+    let boo = {{ isUser }};
+    if (boo) {
+      $("#form").hide();
+    }
+    else {
+      $("#changePassword").hide();
+
+      $("#logoutform").hide();
+      $("#dashboardButton").hide();
+    }
+
+    $(function () {
+      $('#datetimepicker1').datetimepicker();
+    });
+  </script>
+  <!-- WhatsHelp.io widget -->
+  <script type="text/javascript">
+
+    $('ul.nav li.dropdown').hover(function () {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+    }, function () {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+    });
+
+    (function () {
+      var options = {
+        whatsapp: "+923427720005", // WhatsApp number
+        call_to_action: "Whatsapp us", // Call to action
+        position: "left", // Position may be 'right' or 'left'
+      };
+      var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+  </script>
+  <!-- /WhatsHelp.io widget -->
+</body>
+
+</html>

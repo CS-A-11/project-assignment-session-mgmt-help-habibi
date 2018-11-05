@@ -1,0 +1,136 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <link rel="stylesheet" href="/css/style-chat.css">
+</head>
+
+
+<div class="containerChat">
+  <div class="chat__main" style="page-height:50%;">
+    <ol id="messages" class="chat__messages">
+      <div id="message-template">
+        {{#each messages}}
+        <li class="message">
+          <div class="message__title">
+            <h4 id="AdminHead">{{byClient}}</h4>
+            <span id="date">{{createdAt}}</span>
+          </div>
+          <div class="message__body">
+            <p>{{body}}</p>
+          </div>
+        </li>
+        <hr> {{/each}}
+
+      </div>
+        <div class="chat__footer">
+
+      <form id="message-form" role="form" onsubmit="return false">
+        <input id="msgBody" name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
+        <button type="button" onclick="newFunction()">Send</button>
+      </form>
+    </div>
+    </ol>
+
+  
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal-id">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="/js/dropzone.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="/public/js/script.js"></script>
+<script src="/js/deparam.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js" integrity="sha256-ji09tECORKvr8xB9iCl8DJ8iNMLriDchC1+p+yt1hSs="
+  crossorigin="anonymous"></script>
+<script>
+  var socket = io.connect('207.246.82.253:4000', "{{id}}");
+
+  socket.on('connect', function (data) {
+    scrollToBottom();
+    console.log("New client connected")
+    socket.emit('room', `{{_id}}`)
+  });
+
+  function newFunction() {
+    console.log("Button pressed");
+    //Emit a new message function
+    let filename = $("#file").val()
+    if (filename) {
+      console.log("Its an attachement", filename);
+      /*socket.emit("ClientAttachementMessage",{
+        filename:filename,
+        id:"{{_id}}"
+      })*/
+
+    }
+    else {
+      var body = $("#msgBody").val();
+      socket.emit("newMessage", {
+        body: body,
+        id: "{{_id}}"
+      });
+      $("#msgBody").val('');
+    }
+  }
+
+
+
+  function disconnect() {
+    console.log("Disconnect button pressed");
+    socket.emit("hi");
+  }
+  function scrollToBottom() {
+    // Selectors
+    var messages = jQuery('#messages');
+    var newMessage = messages.children('li:last-child')
+    console.log("latestmsg", newMessage);
+    // Heights
+    var clientHeight = messages.prop('clientHeight');
+    var scrollTop = messages.prop('scrollTop');
+    var scrollHeight = messages.prop('scrollHeight');
+    var newMessageHeight = newMessage.innerHeight();
+    var lastMessageHeight = newMessage.prev().innerHeight();
+
+    messages.scrollTop(scrollHeight + 40);
+
+  }
+
+  socket.on("render", function (data) {
+
+    console.log("new msg recieved", data);
+    $("#message-template").append(`<li class="message">          <div class="message__title">          <h4>${data.byClient}</h4>           <span>${data.createdAt}</span>         </div>          <div class="message__body">            <p>${data.body}</p>         </div>       </li>`)
+    scrollToBottom()
+    socket.emit("ClientRead", data);
+
+  })
+  $(document).ready(function () {
+
+    $('#message-form').live("submit", function () {
+      newFunction();
+    });
+  });
+
+</script>

@@ -1,0 +1,99 @@
+{{!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<link href="/css/style-table.css" rel='stylesheet' type='text/css'>
+
+ --}}
+
+
+<div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            
+
+            <div class="panel panel-default panel-table" style="margin-top:50px;">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div   class="col col-xs-6">
+                            <h2 style="color:white;">Your orders</h2>
+                        </div>
+                        <div style="color:blue;" class="col col-xs-6 text-right">
+                            <a href="/client/order" type="button" class="btn btn-sm btn-primary btn-create">Create New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                        <thead>
+                            <tr style="color:green;">
+                                <th>Title</th>
+                                <th>Deadline</th>
+                                <th>Subject</th>
+                                <th>Details</th>
+                                <th>Status</th>
+                                <th>Budget(USD)</th>
+                                <th>Upload a file</th>
+                                <th>Your files</th>
+                                <th>Discuss</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each orders}}
+
+                            <tr>
+                                <td>{{title}}</td>
+                                <td>{{deadline}}</td>
+                                <td>{{subject}}</td>
+                                <td width="0%">{{details}}</td>
+                                <td>{{status}}</td>
+                                <td>${{budget}}</td>
+
+                                <td height="2%">
+
+
+
+
+                                    <form width="0%" action="/client/savefile/{{_id}}" enctype="multipart/form-data" method="post">
+                                        <div class="form-group">
+                                            <input width="50%" style="color:rgb(0, 255, 157);" type='file' name="file" id='file' />
+                                            <input width="100%" class="btn btn-success btn-filter" type="submit" value="Upload">
+
+                                        </div>
+                                    </form>
+                                </td>
+                                <td width="19%">
+                                    {{#files}}
+                                    <a href="{{this}}">{{this}}
+                                        <hr>
+                                    </a>{{/files}}
+
+                                </td>
+                                <td>
+                                    <a href="/client/chat/{{_id}}">Chat</a> Undread:{{unread}}
+                                </td>
+                            </tr>
+                            {{/each }}
+
+                        </tbody>
+                </table>
+            </div>
+            
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#form").hide();
+</script>
