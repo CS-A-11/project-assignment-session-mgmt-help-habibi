@@ -26,12 +26,13 @@ Client can view previous work done by admin.  http://localhost:5000/proves
 
 
 Schema:
-Account
-Message 
-Order
+Account,
+Message ,
+Order,
 Proof
 
 Contribution:
+
 Tahir Hameed:
 
 Wrote the code for front-end and models.
