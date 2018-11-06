@@ -3,6 +3,14 @@ Use the following commands
 
 `npm install`
 `DEBUG=helphabibi:* npm start`# project-assignment-session-mgmt-help-habibi
+<<<<<<< HEAD
+=======
+## To run the project:
+Use the following commands
+
+`npm install`
+`DEBUG=helphabibi:* npm start`# project-assignment-session-mgmt-help-habibi
+>>>>>>> 3e2de7576f8d144de4f00dbcf049130977205fa4
 
 
 Project Group Members:
