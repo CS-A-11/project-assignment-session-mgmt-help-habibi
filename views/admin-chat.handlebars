@@ -84,7 +84,7 @@
  <script>
     // var Message = require('../models/Message');
 
-    var socket = io.connect('207.246.82.253:4000', "{{id}}");
+    var socket = io.connect('localhost:4000', "{{id}}");
 
     socket.on('connect', function (data) {
       scrollToBottom();

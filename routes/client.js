@@ -38,6 +38,24 @@ router.get('/register', function (req, res) {
     res.render('register', { layout: "client-layout.handlebars", isUser: false });
 });
 
+router.post('/register', function(req, res) {
+    User.findOne({username: req.query.username}, function(err, user){
+        if(err) {
+          console.log(err);
+        }
+        var message;
+        if(user) {
+          console.log(user)
+            message = "user exists";
+            console.log(message)
+        } else {
+            message= "user doesn't exist";
+            console.log(message)
+        }
+        res.json({message: message});
+    });
+});
+
 router.post('/register', function (req, res) {
     let firstname = req.body.first_name;
     let lastName = req.body.last_name;

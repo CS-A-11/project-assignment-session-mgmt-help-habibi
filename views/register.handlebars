@@ -11,6 +11,41 @@
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+
+<script>
+$(document).ready(function(){
+
+   $("#email").keyup(function(){
+
+      var uname = $("#email").val().trim();
+
+      if(uname != ''){
+
+         $("#uname_response").show();
+
+         $.ajax({
+            url: 'client.js',
+            type: 'post',
+            data: {uname:uname},
+            success: function(response){
+
+                if(response > 0){
+                    $("#uname_response").html("<span class='not-exists'>* Username Already in use.</span>");
+                }else{
+                    $("#uname_response").html("<span class='exists'>Available.</span>");
+                }
+
+             }
+          });
+      }else{
+         $("#uname_response").hide();
+      }
+
+    });
+
+ });
+</script>
 
 <div style="margin-top:10%;">
         <div class="row centered-form">
@@ -55,6 +90,10 @@
 			    		
 			    		</form>
 			    	</div>
+			    	<div id="uname_response" class="response">
+
+			    	 </div>
+
 					<a href="\client\login"><h6>Or Login</h6></a>
 					
 	    		</div>
