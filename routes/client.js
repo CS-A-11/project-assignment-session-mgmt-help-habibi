@@ -38,21 +38,22 @@ router.get('/register', function (req, res) {
     res.render('register', { layout: "client-layout.handlebars", isUser: false });
 });
 
-router.post('/register', function(req, res) {
-    User.findOne({username: req.query.username}, function(err, user){
+router.post('/emailCheck', function(req, res) {
+   
+    Account.findOne({username: req.body.username}, function(err, account){
         if(err) {
           console.log(err);
         }
         var message;
-        if(user) {
-          console.log(user)
-            message = "user exists";
+        if(account) {
+          console.log(account)
+            message = "account exists";
             console.log(message)
         } else {
-            message= "user doesn't exist";
+            message= "account doesn't exist";
             console.log(message)
         }
-        res.json({message: message});
+        res.json({message: message, exists: !!account});
     });
 });
 

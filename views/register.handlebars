@@ -12,25 +12,26 @@
 }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+</script>
 
 <script>
 $(document).ready(function(){
 
    $("#email").keyup(function(){
 
-      var uname = $("#email").val().trim();
+      var uname = $(this).val().trim();
 
-      if(uname != ''){
+      if(uname !== ''){
 
          $("#uname_response").show();
 
          $.ajax({
-            url: 'client.js',
+            url: '/client/emailCheck',
             type: 'post',
-            data: {uname:uname},
+            data: {username:uname},
             success: function(response){
 
-                if(response > 0){
+                if(response.exists){
                     $("#uname_response").html("<span class='not-exists'>* Username Already in use.</span>");
                 }else{
                     $("#uname_response").html("<span class='exists'>Available.</span>");

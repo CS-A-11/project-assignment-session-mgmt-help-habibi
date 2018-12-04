@@ -8,7 +8,7 @@ var clientRouter = require('./routes/client');
 var adminRouter = require('./routes/admin')
 var chat = require('./routes/chat');
 var exphbs  = require('express-handlebars');
-
+var flash = require('express-flash');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -31,6 +31,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 app.use('/chat',chat)
 app.use('/api/chat', chat);
