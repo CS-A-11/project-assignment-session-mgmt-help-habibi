@@ -25,14 +25,14 @@ Homepage: https://help-habibi.herokuapp.com
 
 
 ### UseCases:
-User can login. http://localhost:5000/client/register
-User can signup.  http://localhost:5000/client/login
-User can view previous orders and orders in progress. http://localhost:5000/client/client-dashboard
-User can upload new order. http://localhost:5000/client/order
-User can chat with admin. http://localhost:5000/client/chat/5be03e5372fb2b1cb63f4268
-Client can download previous work done by admin.  http://localhost:5000/proves
-Admin can upload work for all users. 
-Admin can upload work for specific user.
+1) User can login. http://localhost:5000/client/register
+2) User can signup.  http://localhost:5000/client/login
+3) User can view previous orders and orders in progress. http://localhost:5000/client/client-dashboard
+4) User can upload new order. http://localhost:5000/client/order
+5) User can chat with admin. http://localhost:5000/client/chat/5be03e5372fb2b1cb63f4268
+6) Client can download previous work done by admin.  http://localhost:5000/proves
+7) Admin can upload work for all users. 
+8) Admin can upload work for specific user.
 
 
 ### Schema:
