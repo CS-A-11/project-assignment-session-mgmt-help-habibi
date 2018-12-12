@@ -45,17 +45,17 @@ Proof
 
 ## Tahir Hameed:
 
-Wrote the code for front-end and models.
-Designed and coded the views
-Implemented front-end input form validations for all the views
-Designed the schema for Account and Message
-Implemented usecases 1,2 and 6
+1) Wrote the code for front-end and models.
+2) Designed and coded the views
+3) Implemented front-end input form validations for all the views
+4) Designed the schema for Account and Message
+5) Implemented usecases 1,2
 
 ## Hamza Awais:
-Wrote the code for back-end.
-Wrote the code for back-end error and exception handling for all use cases.
-Implemented Use cases 3,4,5
-Designed the schema for Order and proof.
+1) Wrote the code for back-end.
+2) Wrote the code for back-end error and exception handling for all use cases.
+3) Implemented Use cases 3,4,5,6 ,7 and 8
+4) Designed the schema for Order and proof.
 
 
 
